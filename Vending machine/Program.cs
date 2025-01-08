@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 class VendingMachine
 {
@@ -7,7 +7,7 @@ class VendingMachine
         int balance = 0;
 
         Console.WriteLine("Pret produs: 20 bani");
-        Console.WriteLine("Introdu o moneda (N pt. Nickel, D pt. Dime, Q pt. Quarter).'exit' pt. a opri programul.");
+        Console.WriteLine("Introdu o moneda (N pt. Nickel, D pt. Dime, Q pt. Quarter).0 pt a iesi din program.");
 
         while (true)
         {
@@ -15,7 +15,7 @@ class VendingMachine
             Console.Write("Introdu o moneda: ");
             string input = Console.ReadLine()?.ToUpper();
 
-            if (input == "EXIT") break;
+            if (input == "0") break;
 
             switch (input)
             {
@@ -51,11 +51,12 @@ class VendingMachine
             Console.WriteLine("Dat produs");
             int change = totalBalance - productCost;
             if (change > 0)
-                Console.WriteLine($"Rest: {change} bani");
+                Console.WriteLine(change == 5 ? "Rest 1 N" : change == 10 ? "Rest 1 D" : change == 15 ? "Rest 1 N, 1 D" : "");
         }
         else
         {
             Console.WriteLine("Fonduri insuficiente.");
         }
     }
+    
 }
